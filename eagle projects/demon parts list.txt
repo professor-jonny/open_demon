@@ -1,0 +1,101 @@
+Partlist
+
+Exported from demon.sch at 27/03/2023 12:23 pm
+
+EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+
+Assembly variant: 
+
+Part      Value               Device               Package                  Library                   Sheet
+
+5VSB      TPTP20R             TPTP20R              TP20R                    testpad                   1
+ALE1      TPTP15R             TPTP15R              TP15R                    testpad                   1
+C1        18pf                C-EUC0603            C0603                    rcl                       1
+C2        18pf                C-EUC0603            C0603                    rcl                       1
+C3        47pf                C-EUC0603            C0603                    rcl                       1
+C4        1uf                 C-EUC0603            C0603                    rcl                       1
+C5        .1uf                C-EUC0603            C0603                    rcl                       1
+C6        .1uf                C-EUC0603            C0603                    rcl                       1
+C7        .1uf                C-EUC0603            C0603                    rcl                       1
+C8        .1uf                C-EUC0603            C0603                    rcl                       1
+C9        .1uf                C-EUC0603            C0603                    rcl                       1
+C11       1uf                 C-EUC0603            C0603                    rcl                       1
+C12       .1uf                C-EUC0603            C0603                    rcl                       1
+C13       2.2uf tant          CC2012               C2012                    eagle-ltspice             1
+C14       1uf tant            CC2012               C2012                    eagle-ltspice             1
+C15       10uf Tant           CC2012               C2012                    eagle-ltspice             1
+CE        TPTP15R             TPTP15R              TP15R                    testpad                   1
+CLE1      TPTP15R             TPTP15R              TP15R                    testpad                   1
+CRST      ABMM2-8.000MHZ-E2-T ABMM2-8.000MHZ-E2-T  XTAL_ABMM2-8.000MHZ-E2-T ABMM2-8.000MHZ-E2-T       1
+CR_EN     TPTP15R             TPTP15R              TP15R                    testpad                   1
+D0        TPTP15R             TPTP15R              TP15R                    testpad                   1
+D1        TPTP15R             TPTP15R              TP15R                    testpad                   1
+D1_ESD    PGB1010603          PGB1010603           ESD_PGB1010603MR         PGB1010603                1
+D2        TPTP15R             TPTP15R              TP15R                    testpad                   1
+D2_ESD    PGB1010603          PGB1010603           ESD_PGB1010603MR         PGB1010603                1
+D3        TPTP15R             TPTP15R              TP15R                    testpad                   1
+D4        TPTP15R             TPTP15R              TP15R                    testpad                   1
+D5        TPTP15R             TPTP15R              TP15R                    testpad                   1
+D6        TPTP15R             TPTP15R              TP15R                    testpad                   1
+D7        TPTP15R             TPTP15R              TP15R                    testpad                   1
+GND       TPTP15R             TPTP15R              TP15R                    testpad                   1
+J1        UJ2-MIBH2-4-SMT     UJ2-MIBH2-4-SMT      CUI_UJ2-MIBH2-4-SMT      UJ2-MIBH2-4-SMT           1
+J2        FFC3B07-05-T        FFC3B07-05-T         GCT_FFC3B07-05-T         FFC3B07-05-T              1
+J3        FFC3B07-08-T        FFC3B07-08-T         GCT_FFC3B07-08-T         FFC3B07-08-T              1
+L1        LQW2BAS6N8J00L      LQW2BAS6N8J00L       INDC2015X152N            LQW2BAS6N8J00L            1
+L2        LQW2BAS6N8J00L      LQW2BAS6N8J00L       INDC2015X152N            LQW2BAS6N8J00L            1
+LED       TPTP15R             TPTP15R              TP15R                    testpad                   1
+Q1        BC846               BC846                SOT23                    transistor                1
+Q2        BC846               BC846                SOT23                    transistor                1
+Q3        bc856               BC856A-PNP-SOT23-BEC SOT23-BEC                transistor                1
+R1        22R 5%              R-EU_R0603           R0603                    resistor                  1
+R2        470R 5%             R-EU_R0603           R0603                    resistor                  1
+R3        2k7R 5%             R-EU_R0603           R0603                    resistor                  1
+R4        330R 5%             R-EU_R0603           R0603                    resistor                  1
+R5        22r 5%              R-EU_R0603           R0603                    resistor                  1
+R6        22R 5%              R-EU_R0603           R0603                    resistor                  1
+R9        10kR 5%             R-EU_R0603           R0603                    resistor                  1
+R10       68R 5%              R-EU_R0603           R0603                    resistor                  1
+R11       680R 5%             R-EU_R0603           R0603                    resistor                  1
+RB1       TPTP15R             TPTP15R              TP15R                    testpad                   1
+RE        TPTP15R             TPTP15R              TP15R                    testpad                   1
+RST       TPTP15R             TPTP15R              TP15R                    testpad                   1
+RX_UART   TPTP15R             TPTP15R              TP15R                    testpad                   1
+SBR_EJ/PO TPTP15R             TPTP15R              TP15R                    testpad                   1
+SW1       EG1215AA            EG1215AA             SW_EG1215AA              EG1215AA                  1
+TCK_CR    TPTP15R             TPTP15R              TP15R                    testpad                   1
+TCK_MC    TPTP15R             TPTP15R              TP15R                    testpad                   1
+TDI_CR    TPTP15R             TPTP15R              TP15R                    testpad                   1
+TDI_MC    TPTP15R             TPTP15R              TP15R                    testpad                   1
+TDO_CR    TPTP15R             TPTP15R              TP15R                    testpad                   1
+TDO_MC    TPTP15R             TPTP15R              TP15R                    testpad                   1
+TMS_CR    TPTP15R             TPTP15R              TP15R                    testpad                   1
+TMS_MC    TPTP15R             TPTP15R              TP15R                    testpad                   1
+TST       TPTP15R             TPTP15R              TP15R                    testpad                   1
+TX_UART   TPTP15R             TPTP15R              TP15R                    testpad                   1
+U1                            AT90USB-QFN          QFN64                    controller-micro_atmel_jd 1
+U2        HY27US08281A        HY27US08281A         TSOP48                   memory-hynix              1
+U3        SN74LVC2G00DCUT     SN74LVC2G00DCUT      SOP50P310X90-8N          SN74LVC2G00DCUT           1
+U4        SN74LVC2G02DCUR     SN74LVC2G02DCUR      SOP50P310X90-8N          SN74LVC2G02DCUR           1
+U5        SN74LVTH245APW      SN74LVTH245APW       SOP65P640X120-20N        SN74LVTH245APW            1
+VCC       TPTP15R             TPTP15R              TP15R                    testpad                   1
+VR1       AMS1117-3.3         AMS1117-3.3          SOT229P700X180-4N        AMS1117-3.3               1
+WE1       TPTP15R             TPTP15R              TP15R                    testpad                   1
+WP1       TPTP15R             TPTP15R              TP15R                    testpad                   1
+X0        TPTP15R             TPTP15R              TP15R                    testpad                   1
+X1        TPTP15R             TPTP15R              TP15R                    testpad                   1
+X2        TPTP15R             TPTP15R              TP15R                    testpad                   1
+X3        TPTP15R             TPTP15R              TP15R                    testpad                   1
+X4        TPTP15R             TPTP15R              TP15R                    testpad                   1
+X5        TPTP15R             TPTP15R              TP15R                    testpad                   1
+X6/SYNC   TPTP15R             TPTP15R              TP15R                    testpad                   1
+X7_KIOSK  TPTP15R             TPTP15R              TP15R                    testpad                   1
+X8        TPTP15R             TPTP15R              TP15R                    testpad                   1
+Y0        TPTP15R             TPTP15R              TP15R                    testpad                   1
+Y1        TPTP15R             TPTP15R              TP15R                    testpad                   1
+Y2        TPTP15R             TPTP15R              TP15R                    testpad                   1
+Y3        TPTP15R             TPTP15R              TP15R                    testpad                   1
+Y4        TPTP15R             TPTP15R              TP15R                    testpad                   1
+Y5        TPTP15R             TPTP15R              TP15R                    testpad                   1
+Y6        TPTP15R             TPTP15R              TP15R                    testpad                   1
+Y7        TPTP15R             TPTP15R              TP15R                    testpad                   1
