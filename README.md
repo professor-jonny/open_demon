@@ -1,6 +1,6 @@
 # Open Demon Project
-![sch](https://github.com/professor-jonny/opendemon/blob/main/pics/demon.png)
-[pcb](https://github.com/professor-jonny/open_demon/blob/main/pics/phatpcb.png)
+![sch](https://github.com/professor-jonny/open_demon/blob/main/pics/demon.png)
+![pcb](https://github.com/professor-jonny/open_demon/blob/main/pics/phatpcb.png)
 
 
 ## Overview:
