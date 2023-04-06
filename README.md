@@ -1,5 +1,7 @@
 # Open Demon Project
 ![sch](https://github.com/professor-jonny/opendemon/blob/main/pics/demon.png)
+![pcb] (https://github.com/professor-jonny/open_demon/blob/main/pics/phat%20pcb.png)
+
 
 ## Overview:
 This is an in progress open source recreation project of Team xecuter Dual Nand device. it is the most powerfull multi function nand device created for the xbox 360.
