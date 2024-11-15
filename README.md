@@ -1,47 +1,25 @@
-# Open Demon Project
-![sch](https://github.com/professor-jonny/open_demon/blob/main/pics/demon.png)
-![pcb](https://github.com/professor-jonny/open_demon/blob/main/pics/phatpcb.png)
-
-
 ## Overview:
-This is an in progress open source recreation project of Team xecuter Dual Nand device. it is the most powerfull multi function nand device created for the xbox 360.
-hopefully by starting this project we may get more onboard in recreating the firmware and fixing a few bugs and possible addon companion hardware devices.
+This project is an open-source recreation of the Team Xecuter Demon, a powerful multi-function NAND device for the Xbox 360. Our goal is to rebuild the firmware, fix existing bugs, and potentially develop new hardware add-ons. We hope this project encourages wider community involvement.
 
 ## Demon background:
-The Demon was first released in febuary 2012 in conjunction with an update to J-Runner that included features to control and flash the demon for an all in one solution for programming it was revolutionary at the time and sold well during the initial stages but possibly over hyped and did not actually sell that well compaired to other xecuter devices.
-With the advent of stealth services it semi become redundant but it's true potential was cut short from lack of continuation and release of addon hardware that was promised but never arrived.
+Released in February 2012 alongside a J-Runner update, the Demon offered an all-in-one solution for NAND programming. While initially successful, it was perhaps over-hyped and ultimately didn't achieve the same market penetration as other Team Xecuter devices. The rise of stealth services further diminished its relevance, and the lack of promised add-on hardware hampered its potential. Numerous planned add-ons never saw a public release due to Team Xecuter's internal challenges. Following financial and legal difficulties, ownership transitioned from K3 to Max.
 
-Many add on projects were planned but never made it outside of the Team xecuter dev team, sadly fincinal and legal issues were plagued by K3 (owner of TX at the time) after his move from the UK evenuually leading  to the sale of Team xecuter to Max.
-
-The Demon has access to the uart of the console that could interact with the console, along with plenty of aditional onboard I/O enough to run a complete seperate 8bit bus and a few spare I/O that could be bitbanged to create spi i2c or for any other potential use...
-On July 11th 2012 Team Xecuter announces an Android and iOS app to remotely control the Xecuter Demon over Bluetooth or WiFi but sadly this never made it.
-LCD support was also investigated and a few prototypes were made and distributed between the TX devs to play with but sadly only Switch! the nand switching plugin made it to the platform.
+The Demon provides access to the console's UART for direct interaction, along with extensive onboard I/O capable of supporting a separate 8-bit bus. Additional I/O pins are available for bit-banging SPI, I2C, or other protocols. Although Team Xecuter announced Android and iOS remote control apps in July 2012, these were never released. Similarly, LCD support was explored, with prototypes circulated among developers, but only the NAND switching plugin, Switch!, was officially launched.
 
 ## Project Background:
-After discussing the project with fellow enthusists and reading the details of the long winded process of breaking the xbox 360 ode device recently and being given some insite to the hardware I went to work recreating schematics.
-I was also given pictures of a pre release slim PCB un populated to crosscheck my schematics with a bit of help.
+Inspired by discussions with fellow enthusiasts and analysis of the Xbox 360 ODE cracking process, this project began with recreating the Demon's schematics. Access to images of a pre-release slim PCB aided in verification.
 
-The schematic and hardware information gives us a bit of insite into how the device operates and talks to the flash controller and knowing the hardware and its components and its's design is a big step in the corect direction to be able to reverse engineer.
-
-One thing that was never released was how to control the hardware and I/O on the demon from the console I would like to document how the I/O on the hardware is addressed (if it made that far) and if there is some sort of API to control it over uart there is a API for PC based usb control.
-Third party addons could be realised and give applications access to the I/O on the device what would be better than having a LCD on the fromt of your xbox 360 ?
+Understanding the hardware, components, and design is crucial for reverse engineering. One undocumented aspect is controlling the Demon's hardware and I/O from the console. We aim to document the I/O addressing scheme (if implemented) and investigate the potential for a UART control API. A PC-based USB control API already exists. Third-party add-ons could leverage the Demon's I/O, potentially enabling features like an integrated LCD display.
 
 ## Theory of operation:
-The demon nand address lines and control is mostly in paralell with the consoles onboard nand but a try state bus tranciever is used control reading and writing to isolate the micro from the nand control logic.
+The Demon's NAND interface largely mirrors the console's onboard NAND, using a tri-state bus transceiver to isolate the microcontroller from the NAND control logic. Control appears to rely on the CE and RB signals, with other control lines interrupted by the transceiver. Logic in U3 prevents simultaneous driving of both CE pins. C3 likely introduces timing delays for CE switching to the Demon's NAND via NOR gates in U4. This, combined with RB, likely determines chip readiness before OE activates, hijacking CE to enable the Demon's NAND. OE also enables the tri-state transceiver and Demon's NAND CE logic when the motherboard's CE is high.
 
-It seems only CE and RB is used to control the nand switching functions as all the other control lines are broken by the bus tranciever there is some Nand gate logic in U3 to ensure both CE pins are not driven at the same time.
-C3 seems to be used as timing to delay the switching on and off of CE with the NOR gates in U4 to the Demon's nand, this is likely used with RB to to know if the chip is busy before driving OE to enable hyjacking CE to enable the Demon's onboard nand.
-OE is used to enable the onboard tristate bus tranciever as well as the CE logic to the demon's nand when CE of the mother board is in a high state.
+The design seemingly intercepts NAND control between read/write cycles, asserting and locking control while the chip is busy. Analyzing microcontroller-to-NAND communication is necessary for confirmation, but this theory appears plausible.
 
-The way it is designed it looks like it captures control of the nand between read/ write cycles aserts control and the other signals lock it while it is busy.
-I really need to capture the micro to nand chat and see how it really works but the theory seems legit :-).
+## Challenges:
+The AT90USB microcontroller's bootloader employs custom encryption (believed to be RSA-2048), posing significant challenges. Existing Team Xecuter firmware is unanalyzable, current devices require a bootloader update for compatibility, and a new bootloader would break existing firmware support. Developing new firmware for the current bootloader is blocked by signature checks.
 
-## Caveats:
-The bootloader of the at90usb microcontroller was customised with encription (RSA-2048 so we believe) to secure the device from copying the firmware and installing unofficial firmware.
-This poses us some challanges as none of the existing firmware from TX are able to be reverse engineered.
-All existing devices would be incompatable with software we would create without updating the bootloader
-Installing a new bootloader would break the ability to use existing firmware images.
-We can't build firmware to work with the current bootloader as it will fail sigunature checks.
+Project advancement hinges on recovering the bootloader or its RSA key. Collaboration with experienced individuals is sought. Donations are welcome to support this effort. While various options have been considered, we remain open to suggestions. Contact is being attempted with the original Team Xecuter developer. Interest exists in manufacturing the device if the bootloader is recovered. Due to on-the-fly firmware unpacking, direct firmware analysis is infeasible. A brown-out reset glitch or physical access is likely required for bootloader recovery. Cracking the RSA key is computationally infeasible.
 
 For this project to go forward I would like to recover the bootloader or at least the RSA key by attacking the microcontroller if any one has experience with this or would be willing to try this it would be awesome if you would contact me.
 I don't fancy dropping $1400usd to a chineese firm to do this I would rather give this to a fellow Xbox or scene hacker as this is beyond my skill and a very special area.
@@ -60,37 +38,35 @@ RSA is currently secure and would take a supercomputer decades to crack the firm
 
 
 ## Project Outline/ Future Plans:
-The future plan is to recrate the demon opensource from the ground up with compatibility of the existing device in the short term, with a hardware revision likely required as the main micro and nand while available online is discontinued by the manufactures.
+The future plan is to recrate the 
+The primary goal is an open-source Demon recreation, initially compatible with existing hardware. A hardware revision is likely due to component discontinuation. A more ambitious objective involves a new FPGA-based device with a microcontroller. This would enable on-the-fly NAND image creation, kernel patching, and a console configuration app. A shared memory window could facilitate console-microcontroller communication for RAM offloading, code relocation, and coprocessing.
 
-But the real motavation behind this project is to create completely a new device using FPGA in conjunction with a microcontroller with this we could also attatch ram or use embeded sram in the fpga to on the fly build nand images and patch the kernel at boot time with a small configuration app on the console
+Eaton's testing indicates a NAND bus speed of approximately 1.4 Mbps, suitable for low-bandwidth operations. The impact of using faster media is unknown. This advanced design requires skilled FPGA/CPLD developers. More information is available on 
 
-This fpga/ micro could also give us a shared memory window attached in the nand address space for console to microcontroller communication from there we can offload segments of ram, relocate code, coprocessing etc...
-
-From testing by Eaton the Nand bus operates at around 1.4mbps not flash by any means but will be suitable for low bandwith peherfials and information.
-It is unknown if removing nand chip timing by hosting it in faster media will increase this.
-At the moment this is a pipe dream but it is in the realms of possible if we can get devs motivated and onboard, if you have experence in CPLD or Fpga design and programming and be willing to lend a hand great, I'm by no means a skilled dev just a tinkerer and Xbox enthusist like many.
-more on that on eaton blog here:
+Eaton's blog:
 [eaton works](https://eaton-works.com/2023/01/09/how-microsoft-attempted-to-make-the-xbox-360-dashboard-load-faster/)
 
-I have used Eagle for the Schematic design you can download a free version of eagle here:
+The schematics were designed using Eagle:
 [Autodesk Eagle]( https://www.autodesk.com/products/eagle/free-download)
 
 ## Licensing
-This Project is free and open source.
-  *  Hardware and schematics are shared under the [CERN OHL version 2.0.](https://ohwr.org/cernohl).
+This project is open-source. Hardware and schematics are licensed under the [CERN OHL v.2.0.](https://ohwr.org/cernohl).
 
-If you like my work please consider a small donation to XBMC4XBOX, Team Resurgent or one of the many Great Xbox resources out there you may also send me sample of clones of this project or buckets or cash or what ever :-)
+Donations are welcome to support XBMC4XBOX, Team Resurgent, or other Xbox resources.
+
 [Teamresurgent donate]( https://www.patreon.com/teamresurgent)
 [xbmc4xbox donate](https://www.xbmc4xbox.org.uk/donate/)
 
-## disclaimer
+## Disclaimer
+This project is a work in progress and may contain inaccuracies. Feedback and corrections are welcome. Development is ongoing, and Gerber files for all Demon variants will be released eventually. A preliminary Phat PCB design is available.
 This project is by no meany complete or possibly accurate it is my own account of insight may be incorect, and I'm open to suggestions and correctons.
-I lack time to commit to this project but will slowly progress in time and I will have gerbers available for all the demon variants.
-I started drawing up a Phat PCB but is not quite finished but I have provided what I have done so far that may be of assistance.
 
-## Shoutouts
-Id' Like to thank Coz, Goobycorp and Eaton for their help and info it would not of made it anywhere with out their assistance and info.
+## Acknowledgements
+We thank Coz, Goobycorp, and Eaton for their invaluable contributions.
 
+# Open Demon Project
+![sch](https://github.com/professor-jonny/open_demon/blob/main/pics/demon.png)
+![pcb](https://github.com/professor-jonny/open_demon/blob/main/pics/phatpcb.png)
 
 
 
