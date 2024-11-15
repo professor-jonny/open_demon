@@ -1,3 +1,7 @@
+# Open Demon Project
+![sch](https://github.com/professor-jonny/open_demon/blob/main/pics/demon.png)
+![pcb](https://github.com/professor-jonny/open_demon/blob/main/pics/phatpcb.png)
+
 ## Overview:
 This project is an open-source recreation of the Team Xecuter Demon, a powerful multi-function NAND device for the Xbox 360. Our goal is to rebuild the firmware, fix existing bugs, and potentially develop new hardware add-ons. We hope this project encourages wider community involvement.
 
@@ -63,10 +67,3 @@ This project is by no meany complete or possibly accurate it is my own account o
 
 ## Acknowledgements
 We thank Coz, Goobycorp, and Eaton for their invaluable contributions.
-
-# Open Demon Project
-![sch](https://github.com/professor-jonny/open_demon/blob/main/pics/demon.png)
-![pcb](https://github.com/professor-jonny/open_demon/blob/main/pics/phatpcb.png)
-
-
-
